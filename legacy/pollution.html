@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Pollution Comparator - EcoTree Impact Analyzer</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L8 8H10V14H14V8H16L12 2Z" fill="white" opacity="0.9"/>
+                        <path d="M12 14V22M10 14C10 14 7 12 7 9C7 6 9 6 10 6M14 14C14 14 17 12 17 9C17 6 15 6 14 6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="7" cy="9" r="0.8" fill="white" opacity="0.7"/>
+                        <circle cx="17" cy="9" r="0.8" fill="white" opacity="0.7"/>
+                        <path d="M6 12L4 10M18 12L20 10" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-text-main">EcoTree</span>
+                    <span class="logo-text-sub">Impact Analyzer</span>
+                </div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="advanced-calculator.html">Advanced</a></li>
+                <li><a href="pollution.html">Pollution</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h1 class="card-title">City Pollution Comparator</h1>
+            <p>Compare pollution levels across cities and see how many trees are needed to offset emissions</p>
+
+            <div class="form-group">
+                <label for="citySelect">Select City</label>
+                <select id="citySelect" onchange="loadCityData()">
+                    <option value="">Select a city</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                </select>
+            </div>
+
+            <div id="loading" class="spinner" style="display: none;"></div>
+            <div id="errorMessage" class="alert alert-error" style="display: none;"></div>
+        </div>
+
+        <!-- Pollution Data Display -->
+        <div id="pollutionData" style="display: none;">
+            <!-- Current AQI -->
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3 id="aqiValue">-</h3>
+                    <p>Air Quality Index</p>
+                </div>
+                <div class="summary-card">
+                    <h3 id="pm25Value">-</h3>
+                    <p>PM2.5 (μg/m³)</p>
+                </div>
+                <div class="summary-card">
+                    <h3 id="pm10Value">-</h3>
+                    <p>PM10 (μg/m³)</p>
+                </div>
+            </div>
+
+            <!-- Real-Time Daily Offset -->
+            <div class="card">
+                <h2 class="card-title">Today's Air Quality Impact</h2>
+                <div id="dailyOffset"></div>
+            </div>
+
+            <!-- Tree Recommendations -->
+            <div class="card">
+                <h2 class="card-title">Tree Recommendations</h2>
+                <div id="treeRecommendations"></div>
+            </div>
+
+            <!-- Comparison Chart -->
+            <div class="card">
+                <h2 class="card-title">City Comparison</h2>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="compareAllCities()">Compare All Cities</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- AQI Directory -->
+        <div class="card" style="margin-top: 3rem;">
+            <h2 class="card-title">Current AQI Across Supported Cities</h2>
+            <p>Live or estimated AQI, PM2.5, and PM10 values for every city in the EcoTree network.</p>
+            <div id="cityAqiList"></div>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+    <script src="static/cities-data.js"></script>
+    <script src="static/auth.js"></script>
+    <script src="static/auth-nav.js"></script>
+    <script src="static/advanced-features.js"></script>
+    <script src="static/simulation-features.js"></script>
+    <script src="static/pollution.js"></script>
+    <script>
+        // Populate city dropdown dynamically
+        document.addEventListener('DOMContentLoaded', () => {
+            const citySelect = document.getElementById('citySelect');
+            if (citySelect && typeof INDIAN_CITIES !== 'undefined') {
+                const cities = Object.keys(INDIAN_CITIES).sort();
+                // Clear existing options except the first one
+                citySelect.innerHTML = '<option value="">Select a city</option>';
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+

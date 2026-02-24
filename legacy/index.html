@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTree Impact Analyzer - Home</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <nav class="frosty-nav">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L8 8H10V14H14V8H16L12 2Z" fill="white" opacity="0.9"/>
+                        <path d="M12 14V22M10 14C10 14 7 12 7 9C7 6 9 6 10 6M14 14C14 14 17 12 17 9C17 6 15 6 14 6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="7" cy="9" r="0.8" fill="white" opacity="0.7"/>
+                        <circle cx="17" cy="9" r="0.8" fill="white" opacity="0.7"/>
+                        <path d="M6 12L4 10M18 12L20 10" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-text-main">EcoTree</span>
+                    <span class="logo-text-sub">Impact Analyzer</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="advanced-calculator.html">Advanced</a></li>
+                <li><a href="pollution.html">Pollution</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="home-shell">
+        <header class="hero hero-full hero-centered">
+            <div class="hero-left">
+                <p class="hero-kicker">Tree Plantation & Carbon Planning</p>
+                <h1>Plant smarter today, breathe better tomorrow.</h1>
+                <p class="hero-subtitle">
+                    Live AQI insights, climate-fit tree picks, and calculators that now cover 100+ Indian cities with higher tree capacity planning.
+                </p>
+                <div class="hero-cta hero-cta-centered">
+                    <button class="btn btn-primary hero-cta-main" onclick="document.getElementById('insights').scrollIntoView({ behavior: 'smooth' })">
+                        Let’s Start 🌱
+                    </button>
+                    <button class="btn btn-outline" onclick="window.location.href='calculator.html'">
+                        Explore Calculator
+                    </button>
+                </div>
+                <div class="hero-grove" aria-hidden="true">
+                    <span class="hero-tree hero-tree-lg"></span>
+                    <span class="hero-tree hero-tree-md"></span>
+                    <span class="hero-tree hero-tree-sm"></span>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <strong id="heroCityCount">100</strong>
+                        <span>Indian cities mapped</span>
+                    </div>
+                    <div class="hero-stat">
+                        <strong id="heroSpeciesCount">30+</strong>
+                        <span>Native species modeled</span>
+                    </div>
+                    <div class="hero-stat">
+                        <strong>1,00,000+</strong>
+                        <span>Trees per plan supported</span>
+                    </div>
+                </div>
+                <div class="quote-rotator">
+                    <span id="heroQuote">“Plant a tree today, breathe a better tomorrow.”</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="section eco-education">
+            <div class="section-header">
+                <div>
+                    <p class="section-kicker">Know your air</p>
+                    <h2>CO₂, AQI & PM explained with friendly visuals</h2>
+                </div>
+                <button class="btn btn-outline btn-small" onclick="document.getElementById('insights').scrollIntoView({ behavior: 'smooth' })">
+                    Explore live data
+                </button>
+            </div>
+            <div class="eco-education-grid">
+                <article class="eco-education-card">
+                    <div class="info-icon info-icon-co2">
+                        <span class="insight-pulse"></span>
+                    </div>
+                    <h3>What is CO₂?</h3>
+                    <p>Carbon dioxide traps heat. Our calculators estimate how many trees you need to absorb tonnes of CO₂ over 5, 10, and 20 years.</p>
+                    <small>Tip: Fast growers like Bamboo and Neem soak up CO₂ quickly.</small>
+                </article>
+                <article class="eco-education-card">
+                    <div class="info-icon info-icon-aqi">
+                        <span class="insight-pulse"></span>
+                    </div>
+                    <h3>Why AQI matters</h3>
+                    <p>Air Quality Index combines PM, NO₂, and ozone. We classify cities into five AQI bands and match species that thrive in each band.</p>
+                    <small>Live AQI pulls help prioritize most polluted neighborhoods.</small>
+                </article>
+                <article class="eco-education-card">
+                    <div class="info-icon info-icon-pm">
+                        <span class="insight-pulse"></span>
+                    </div>
+                    <h3>What is PM?</h3>
+                    <p>PM2.5 and PM10 are microscopic particles. Dense, leafy canopies filter these particles and cool the ground at the same time.</p>
+                    <small>Layer species with overlapping canopies for maximum filtration.</small>
+                </article>
+            </div>
+        </section>
+
+        <section id="insights" class="section">
+            <div class="section-header">
+                <div>
+                    <p class="section-kicker">Live eco intelligence</p>
+                    <h2>AQI, climate zone, and weather matched tree advice</h2>
+                </div>
+                <div class="city-input">
+                    <input type="text" id="cityInput" list="cityList" placeholder="Search city e.g., Bengaluru" autocomplete="off">
+                    <datalist id="cityList"></datalist>
+                    <button class="btn btn-primary" onclick="HomeInsights.handleCityLookup()">Analyze</button>
+                </div>
+            </div>
+            <div class="insights-grid">
+                <article class="card insight-card">
+                    <header>
+                        <p class="eyebrow">Air quality</p>
+                        <h3 id="aqiValue">--</h3>
+                        <span id="aqiCategory" class="pill">Awaiting city</span>
+                    </header>
+                    <div class="chart-container mini-chart">
+                        <canvas id="aqiBenefitChart"></canvas>
+                    </div>
+                    <footer>
+                        <p id="aqiMessage">Enter a city to see live AQI data.</p>
+                        <ul id="aqiTreeList" class="tag-list"></ul>
+                    </footer>
+                </article>
+
+                <article class="card insight-card">
+                    <header>
+                        <p class="eyebrow">Climate zone & weather</p>
+                        <h3 id="climateZone">--</h3>
+                    </header>
+                    <div class="weather-chips" id="weatherChips">
+                        <span class="pill">Temp --°C</span>
+                        <span class="pill">Humidity --%</span>
+                        <span class="pill">Rainfall -- mm</span>
+                    </div>
+                    <p id="climateNarrative">
+                        We’ll describe how today’s weather helps or hinders tree growth.
+                    </p>
+                    <ul id="climateTreeList" class="tag-list"></ul>
+                </article>
+
+                <article class="card insight-card">
+                    <header>
+                        <p class="eyebrow">Planting months</p>
+                        <h3>Best timing calendar</h3>
+                    </header>
+                    <div class="planting-chart">
+                        <canvas id="plantingChart"></canvas>
+                    </div>
+                    <p id="plantingSummary">
+                        We’ll score planting suitability for each month.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="section-header">
+                <div>
+                    <p class="section-kicker">Impact snapshot</p>
+                    <h2>Your plantation story at a glance</h2>
+                </div>
+                <button class="btn btn-outline btn-small" onclick="window.location.href='dashboard.html'">
+                    View Dashboard
+                </button>
+            </div>
+            <div class="summary-grid">
+                <div class="summary-card glass">
+                    <p>Total trees logged</p>
+                    <h3 id="totalTrees">0</h3>
+                </div>
+                <div class="summary-card glass">
+                    <p>CO₂ saved (kg)</p>
+                    <h3 id="totalCO2">0</h3>
+                </div>
+                <div class="summary-card glass">
+                    <p>Top species</p>
+                    <h3 id="topSpecies">--</h3>
+                </div>
+                <div class="summary-card glass">
+                    <p>Car offset equivalents</p>
+                    <h3 id="carOffsets">0</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <p class="section-kicker">Carbon calculator</p>
+                    <h2>Two ways to plan your reduction goals</h2>
+                </div>
+                <button class="btn btn-primary" onclick="window.location.href='calculator.html'">
+                    Open Full Calculator
+                </button>
+            </div>
+            <div class="calculator-preview">
+                <div class="card calc-card">
+                    <h3>1. I know my CO₂ footprint</h3>
+                    <p>Enter yearly emissions to learn how many trees you need—now supporting up to 1,00,000 planned trees.</p>
+                    <div class="form-group">
+                        <label for="footprintInput">CO₂ generated per year (kg)</label>
+                        <input type="number" id="footprintInput" placeholder="e.g., 3200">
+                    </div>
+                    <div class="form-group">
+                        <label for="speciesSelect">Preferred species</label>
+                        <select id="speciesSelect"></select>
+                    </div>
+                        <button class="btn btn-primary" onclick="HomeInsights.calculateTreesNeeded()">Calculate trees needed</button>
+                    <div id="footprintResult" class="result-callout"></div>
+                </div>
+                <div class="card calc-card">
+                    <h3>2. I know my tree count</h3>
+                    <p>See CO₂ absorbed over 5/10/20 years for your plan across 100+ Indian cities.</p>
+                    <div class="form-group">
+                        <label for="plannedTrees">Trees you plan to plant</label>
+                        <input type="number" id="plannedTrees" placeholder="e.g., 50">
+                    </div>
+                    <div class="form-group">
+                        <label for="plannedSpecies">Species</label>
+                        <select id="plannedSpecies"></select>
+                    </div>
+                    <button class="btn btn-primary" onclick="HomeInsights.calculateCO2Timeline()">Show absorption</button>
+                    <div class="chart-container mini-chart">
+                        <canvas id="carbonTimelineChart"></canvas>
+                    </div>
+                    <div id="carbonTimelineSummary" class="result-callout"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <p class="section-kicker">Why EcoTree</p>
+                    <h2>Designed for communities that want action, not just data</h2>
+                </div>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3>Live AQI & Weather</h3>
+                    <p>Plug in any city to see real-time AQI, current weather, and climate zone specific advice with tree suggestions.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Climate-Fit Planting Calendar</h3>
+                    <p>Month-wise planting score that adjusts to seasonal rainfall and humidity trends for your location.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Dual Carbon Calculator</h3>
+                    <p>Start from CO₂ emissions or trees available—either way we project absorption over decades.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Dashboard & Reset</h3>
+                    <p>Track every calculation, compare cities, and reset your journey when you want a fresh start.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Species Intelligence</h3>
+                    <p>Rich metadata for 30+ native trees covering CO₂ rates, water needs, and ideal soils.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Shareable Impact</h3>
+                    <p>Generate PDF tree passports with QR codes to celebrate each plantation drive.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>EcoTree Impact Analyzer • Built for people & planet</p>
+        <p class="footer-sub">No maps. No bulk uploads. Just actionable climate intelligence.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="static/script.js"></script>
+    <script src="static/cities-data.js"></script>
+    <script src="static/auth.js"></script>
+    <script src="static/auth-nav.js"></script>
+    <script src="static/home.js"></script>
+    <script>
+        function loadSummary() {
+            const progress = Calculations.getProgress();
+            document.getElementById('totalTrees').textContent = Utils.formatNumber(progress.totalTrees);
+            document.getElementById('totalCO2').textContent = Utils.formatNumber(Math.round(progress.totalCO2));
+            const topSpecies = Leaderboard.getTopSpecies(1);
+            if (topSpecies.length > 0) {
+                document.getElementById('topSpecies').textContent = topSpecies[0].species;
+            }
+            document.getElementById('carOffsets').textContent = Utils.calculateCarEquivalents(Utils.kgToTonnes(progress.totalCO2));
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSummary();
+            HomeInsights.init();
+        });
+    </script>
+</body>
+</html>
+

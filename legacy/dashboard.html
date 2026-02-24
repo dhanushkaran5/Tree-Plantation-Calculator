@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EcoTree Impact Analyzer</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L8 8H10V14H14V8H16L12 2Z" fill="white" opacity="0.9"/>
+                        <path d="M12 14V22M10 14C10 14 7 12 7 9C7 6 9 6 10 6M14 14C14 14 17 12 17 9C17 6 15 6 14 6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="7" cy="9" r="0.8" fill="white" opacity="0.7"/>
+                        <circle cx="17" cy="9" r="0.8" fill="white" opacity="0.7"/>
+                        <path d="M6 12L4 10M18 12L20 10" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-text-main">EcoTree</span>
+                    <span class="logo-text-sub">Impact Analyzer</span>
+                </div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="advanced-calculator.html">Advanced</a></li>
+                <li><a href="pollution.html">Pollution</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+            <div>
+                <h1 class="card-title" style="margin-bottom: 0.25rem;">Your Impact Dashboard</h1>
+                <p style="margin: 0; color: var(--text-secondary);">Track progress or reset to start fresh</p>
+            </div>
+            <button class="btn btn-outline" onclick="Dashboard.resetData()">Reset All Data</button>
+        </div>
+        <!-- User Progress Summary -->
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h3 id="userTotalTrees">0</h3>
+                <p>Total Trees</p>
+            </div>
+            <div class="summary-card">
+                <h3 id="userTotalCO2">0</h3>
+                <p>Total CO₂ Saved (kg)</p>
+            </div>
+            <div class="summary-card">
+                <h3 id="userCalculations">0</h3>
+                <p>Total Calculations</p>
+            </div>
+        </div>
+
+        <!-- Carbon Neutrality Score -->
+        <div class="card">
+            <h2 class="card-title">Carbon Neutrality Score</h2>
+            <div id="carbonScoreDisplay"></div>
+        </div>
+
+        <!-- Goal Tracker -->
+        <div class="card">
+            <h2 class="card-title">CO₂ Offset Goals</h2>
+            <div id="goalTracker"></div>
+        </div>
+
+        <!-- Progress Bars -->
+        <div class="card">
+            <h2 class="card-title">Progress</h2>
+            <div id="progressBars"></div>
+        </div>
+
+        <!-- Statistics Charts -->
+        <div class="card">
+            <h2 class="card-title">Statistics</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">Species Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="speciesChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1rem;">CO₂ Absorption Over Time</h3>
+                    <div class="chart-container">
+                        <canvas id="co2Chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">AQI vs Tree Benefit</h2>
+            <p>See how your recorded species mix supports different AQI bands.</p>
+            <div class="chart-container">
+                <canvas id="aqiBenefitDashboard"></canvas>
+            </div>
+        </div>
+
+        <!-- City Leaderboard -->
+        <div class="card">
+            <h2 class="card-title">City Leaderboard</h2>
+            <p>Ranking cities based on trees added and CO₂ saved</p>
+            <div id="leaderboardList"></div>
+        </div>
+
+        <!-- Global Impact Meter -->
+        <div class="card">
+            <h2 class="card-title">Global Impact Meter</h2>
+            <p>Total Earth impact from all tree plantations</p>
+            <div id="globalImpact"></div>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+    <script src="static/auth.js"></script>
+    <script src="static/auth-nav.js"></script>
+    <script src="static/advanced-features.js"></script>
+    <script src="static/simulation-features.js"></script>
+    <script src="static/dashboard.js"></script>
+</body>
+</html>
+
+
+

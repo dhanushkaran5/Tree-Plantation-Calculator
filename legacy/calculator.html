@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Calculator - EcoTree Impact Analyzer</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L8 8H10V14H14V8H16L12 2Z" fill="white" opacity="0.9" />
+                        <path d="M12 14V22M10 14C10 14 7 12 7 9C7 6 9 6 10 6M14 14C14 14 17 12 17 9C17 6 15 6 14 6"
+                            stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                        <circle cx="7" cy="9" r="0.8" fill="white" opacity="0.7" />
+                        <circle cx="17" cy="9" r="0.8" fill="white" opacity="0.7" />
+                        <path d="M6 12L4 10M18 12L20 10" stroke="white" stroke-width="1.2" stroke-linecap="round"
+                            opacity="0.6" />
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-text-main">EcoTree</span>
+                    <span class="logo-text-sub">Impact Analyzer</span>
+                </div>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="advanced-calculator.html">Advanced</a></li>
+                <li><a href="pollution.html">Pollution</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h1 class="card-title">Carbon Reduction Calculator</h1>
+            <p>Calculate the carbon impact of your tree plantation</p>
+
+            <form id="calculatorForm">
+                <div class="form-group">
+                    <label for="species">Tree Species</label>
+                    <select id="species" required>
+                        <option value="">Select a species</option>
+                        <option value="Neem">Neem (20 kg CO₂/year)</option>
+                        <option value="Mango">Mango (22 kg CO₂/year)</option>
+                        <option value="Banyan">Banyan (48 kg CO₂/year)</option>
+                        <option value="Eucalyptus">Eucalyptus (30 kg CO₂/year)</option>
+                        <option value="Pine">Pine (12 kg CO₂/year)</option>
+                        <option value="Acacia">Acacia (15 kg CO₂/year)</option>
+                        <option value="Oak">Oak (25 kg CO₂/year)</option>
+                        <option value="Teak">Teak (28 kg CO₂/year)</option>
+                        <option value="Cedar">Cedar (35 kg CO₂/year)</option>
+                        <option value="Gulmohar">Gulmohar (18 kg CO₂/year)</option>
+                        <option value="Mahogany">Mahogany (32 kg CO₂/year)</option>
+                        <option value="Peepal">Peepal (45 kg CO₂/year)</option>
+                        <option value="Jamun">Jamun (24 kg CO₂/year)</option>
+                        <option value="Arjun">Arjun (26 kg CO₂/year)</option>
+                        <option value="Amaltas">Amaltas (20 kg CO₂/year)</option>
+                        <option value="Kadam">Kadam (22 kg CO₂/year)</option>
+                        <option value="Shisham">Shisham (28 kg CO₂/year)</option>
+                        <option value="Semal">Semal (38 kg CO₂/year)</option>
+                        <option value="Palash">Palash (19 kg CO₂/year)</option>
+                        <option value="Ashoka">Ashoka (17 kg CO₂/year)</option>
+                        <option value="Kachnar">Kachnar (21 kg CO₂/year)</option>
+                        <option value="Baheda">Baheda (23 kg CO₂/year)</option>
+                        <option value="Haritaki">Haritaki (25 kg CO₂/year)</option>
+                        <option value="Bamboo">Bamboo (40 kg CO₂/year)</option>
+                        <option value="Sandalwood">Sandalwood (29 kg CO₂/year)</option>
+                        <option value="Casuarina">Casuarina (27 kg CO₂/year)</option>
+                        <option value="Tamarind">Tamarind (26 kg CO₂/year)</option>
+                        <option value="Coconut">Coconut (22 kg CO₂/year)</option>
+                        <option value="Jackfruit">Jackfruit (24 kg CO₂/year)</option>
+                        <option value="Pomegranate">Pomegranate (18 kg CO₂/year)</option>
+                        <option value="Banyan Fig">Banyan Fig (44 kg CO₂/year)</option>
+                        <option value="Sapota">Sapota (20 kg CO₂/year)</option>
+                        <option value="Guava">Guava (18 kg CO₂/year)</option>
+                        <option value="Lemon">Lemon (15 kg CO₂/year)</option>
+                        <option value="Papaya">Papaya (10 kg CO₂/year)</option>
+                        <option value="Curry Leaf">Curry Leaf (8 kg CO₂/year)</option>
+                        <option value="Drumstick">Drumstick (25 kg CO₂/year)</option>
+                        <option value="Amla">Amla (22 kg CO₂/year)</option>
+                        <option value="Custard Apple">Custard Apple (16 kg CO₂/year)</option>
+                        <option value="Sapodilla">Sapodilla (20 kg CO₂/year)</option>
+                        <option value="Custom">Custom Species</option>
+                    </select>
+                </div>
+
+                <div id="customSpeciesGroup" class="form-group" style="display: none;">
+                    <label for="customSpeciesName">Custom Species Name</label>
+                    <input type="text" id="customSpeciesName" placeholder="Enter species name">
+                </div>
+
+                <div id="customCO2Group" class="form-group" style="display: none;">
+                    <label for="customCO2">CO₂ Absorption (kg per year)</label>
+                    <input type="number" id="customCO2" min="1" placeholder="Enter CO₂ absorption rate">
+                </div>
+
+                <div class="form-group">
+                    <label for="calculatorCity">City in India</label>
+                    <select id="calculatorCity" required>
+                        <option value="">Select a city</option>
+                    </select>
+                    <small class="form-hint">We support 100+ cities for localized AQI and climate insights.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="count">Number of Trees</label>
+                    <input type="number" id="count" min="1" max="1000000" required placeholder="e.g., 5000 trees">
+                    <small class="form-hint">Plan large drives confidently — up to 1,000,000 trees per scenario.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="years">Years</label>
+                    <input type="number" id="years" min="1" required placeholder="Enter number of years">
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetCalculator()">Reset</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="card" style="display: none;">
+            <h2 class="card-title">Calculation Results</h2>
+            <div id="resultsContent"></div>
+
+            <!-- Chart -->
+            <!-- Chart Removed -->
+
+            <div class="btn-group">
+                <!-- CSV Export Removed -->
+                <button class="btn btn-primary" onclick="generatePDF()">Generate PDF Passport</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">Planning Helpers</h2>
+            <p>Run quick scenarios without leaving the calculator.</p>
+            <div class="planner-grid">
+                <div class="planner-card">
+                    <h3>Estimate trees from CO₂ footprint</h3>
+                    <div class="form-group">
+                        <label for="annualFootprint">CO₂ generated per year (kg)</label>
+                        <input type="number" id="annualFootprint" placeholder="e.g., 3200">
+                    </div>
+                    <div class="form-group">
+                        <label for="footprintSpecies">Preferred species</label>
+                        <select id="footprintSpecies"></select>
+                    </div>
+                    <button class="btn btn-primary" id="footprintCalcBtn">Calculate requirement</button>
+                    <div id="footprintPlannerResult" class="result-callout" style="display: none;"></div>
+                </div>
+                <div class="planner-card">
+                    <h3>Timeline for planned trees</h3>
+                    <div class="form-group">
+                        <label for="plannerTreeCount">Trees you plan to plant</label>
+                        <input type="number" id="plannerTreeCount" placeholder="e.g., 50">
+                    </div>
+                    <div class="form-group">
+                        <label for="plannerSpecies">Species</label>
+                        <select id="plannerSpecies"></select>
+                    </div>
+                    <button class="btn btn-primary" id="timelineCalcBtn">Show CO₂ timeline</button>
+                    <div class="chart-container mini-chart">
+                        <canvas id="plannerTimelineChart"></canvas>
+                    </div>
+                    <div id="timelineSummary" class="result-callout" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+    <script src="static/cities-data.js"></script>
+    <script src="static/auth.js"></script>
+    <script src="static/auth-nav.js"></script>
+    <script src="static/calculator.js"></script>
+</body>
+
+</html>
