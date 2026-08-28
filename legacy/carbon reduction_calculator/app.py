@@ -1,14 +1,51 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import logging
+import os
 from typing import Dict, List
 
-from flask import Flask, flash, redirect, render_template, request, url_for
+from flask import Flask, flash, redirect, render_template, request, url_for, jsonify
+from werkzeug.exceptions import HTTPException
+
+try:
+    from flask_cors import CORS
+    HAS_CORS = True
+except ImportError:
+    HAS_CORS = False
 
 import database as db
 
+# Production Logging Configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+logger = logging.getLogger("carbon_calculator")
+
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "dev-secret-change-me"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret-change-in-production")
+
+# Enable CORS for production frontend communication
+frontend_url = os.environ.get("FRONTEND_URL", "*")
+if HAS_CORS:
+    CORS(app, resources={r"/*": {"origins": frontend_url}})
+else:
+    @app.after_request
+    def apply_cors_headers(response):
+        response.headers["Access-Control-Allow-Origin"] = frontend_url
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
+        response.headers["Access-Control-Allow-Methods"] = "GET,POST,PUT,DELETE,OPTIONS"
+        return response
+
+
+@app.errorhandler(Exception)
+def handle_global_exception(error):
+    if isinstance(error, HTTPException):
+        return error
+    logger.error("Unhandled Exception in Carbon Calculator: %s", str(error), exc_info=True)
+    return render_template("index.html", error_message="An internal server error occurred. Please try again."), 500
+
 
 CLIMATE_DESCRIPTIONS: Dict[str, str] = {
     "tropical": "Warm and humid most of the year with heavy monsoon rainfall.",
@@ -43,10 +80,10 @@ def determine_badge(total_kg: float) -> ImpactBadge:
     for threshold, label in BADGE_THRESHOLDS:
         if total_kg >= threshold:
             return ImpactBadge(label=label, color=BADGE_COLORS.get(label, "#4caf50"))
-    return ImpactBadge(label="Bronze", color=BADGE_COLORS["Bronze"])
+    return ImpactBadge(label="Bronze", color="#cd7f32")
 
 
-def build_city_payload(cities) -> List[Dict]:
+def build_city_payload(cities: List[dict]) -> List[dict]:
     payload = []
     for city in cities:
         payload.append(
@@ -158,4 +195,7 @@ def dashboard():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    debug_mode = os.environ.get("FLASK_DEBUG", "False").lower() in ("true", "1")
+    logger.info("Starting Carbon Calculator server on port %d (debug=%s)", port, debug_mode)
+    app.run(host="0.0.0.0", port=port, debug=debug_mode)

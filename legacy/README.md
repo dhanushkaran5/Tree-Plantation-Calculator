@@ -1,156 +1,183 @@
-# EcoTree Impact Analyzer
+# 🌿 Tree Plantation Calculator
 
-A complete, production-ready website for calculating carbon reduction from tree plantations, visualizing planting locations on a map, comparing pollution between cities, and generating PDF "tree passports."
+**India's Premier Environmental Sustainability & Carbon Analytics Platform**
 
-## Features
+> A production-quality, research-grade web platform for calculating tree plantation impact, analyzing city air quality, scoring urban sustainability, and planning large-scale green initiatives — for NGOs, CSR teams, smart-city planners, and environmental researchers.
 
-### 1. Home Page
-- Modern hero section with quick carbon calculator
-- Summary cards showing total trees, CO₂ saved, and top species
-- Navigation to all modules
+---
 
-### 2. Carbon Reduction Calculator
-- Choose from 7 predefined tree species or create custom species
-- Calculate annual and cumulative CO₂ absorption
-- Visualize CO₂ absorption over time with Chart.js
-- Export results to CSV
-- Generate PDF "Tree Passport" with QR code
-- Compare species absorption rates
+## ✨ Features
 
-### 3. Tree Map Visualizer
-- Interactive Leaflet.js map
-- Drop pins for planted trees
-- Select species and count for each location
-- View location and species summaries
-- Export map data to CSV
+### 🧮 Calculator Center (6 Integrated Calculators)
+| Calculator | Description |
+|---|---|
+| **Carbon Offset** | CO₂ absorption over 1–100 years across 42+ Indian species |
+| **Budget Planner** | How many trees can ₹500 → ₹10 Lakh plant? |
+| **Temperature Reduction** | Urban heat island effect from plantation |
+| **Green City Score** | 0–100 sustainability score for any Indian city |
+| **Environmental Impact** | Combined oxygen, water, soil, biodiversity metrics |
+| **Tree Comparison** | Side-by-side species analysis |
 
-### 4. Bulk CSV Upload Analyzer
-- Upload CSV files with tree data (species, count, location)
-- Auto-generate total CO₂ saved
-- Species distribution charts
-- Map visualization of locations
+### 🌬️ City Pollution & AQI Analysis
+- AQI, PM2.5, PM10, humidity, temperature data for **100+ Indian cities**
+- Climate zone badges (Tropical, Subtropical, Arid, etc.)
+- AI-matched tree species recommendations based on local pollution profile
+- Seasonal plantation suitability calendar
 
-### 5. City Pollution Comparator
-- Compare pollution levels across 5 major Indian cities
-- Fetch live AQI data using OpenAQ API
-- Calculate trees needed to offset annual emissions
-- Species recommendations based on pollution levels
+### 🏙️ Green City Score
+- 0–100 sustainability score based on AQI + tree density + green cover + population
+- Circular progress ring animation
+- Radar chart showing all dimensions
+- Improvement action suggestions
+- City rankings table (Top 10 cleanest vs. most polluted)
 
-### 6. Dashboard & Leaderboard
-- Track user progress and achievements
-- Achievement badges (Seed Planter, Eco Warrior, City Saver)
-- City leaderboard ranking
-- Statistics charts (species distribution, CO₂ over time)
+### 📈 Impact Dashboard
+- Live animated counters (6 environmental metrics)
+- **50-Year Forecast Slider** — interactive projection of CO₂ absorption
+- Species distribution pie chart
+- Monthly plantation trend chart
+- Achievement badges system
+- Recent calculations timeline
+- PDF Report generation
 
-## Tech Stack
+### 📄 PDF Tree Passport
+- Certificate-style downloadable PDF with QR code
+- Includes species info, CO₂ data, location, year, and environmental impact
+- Available on every calculator result
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Libraries**:
-  - Chart.js - Data visualization
-  - Leaflet.js - Interactive maps
-  - jsPDF - PDF generation
-  - QRCode.js - QR code generation
-  - PapaParse - CSV parsing
-- **Storage**: localStorage (client-side data persistence)
-- **APIs**: OpenAQ API for pollution data
+### 💾 Data Export
+- CSV export for all calculations
+- QR code generation for sharing results
 
-## Project Structure
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | HTML5 + Vanilla CSS + Vanilla JS (ES6+) |
+| **Charts** | Chart.js (line, bar, radar, pie, doughnut) |
+| **PDF** | jsPDF 2.5.1 |
+| **QR Codes** | QRCode.js 1.5.3 |
+| **Typography** | Google Fonts – Outfit + Poppins |
+| **Backend (Python)** | Flask + SQLite (`backend/`) |
+| **Backend (Node.js)** | Express + better-sqlite3 (`server/`) |
+| **Data Storage** | localStorage (offline-first) + SQLite (persistent sync) |
+
+---
+
+## 🗂️ Project Structure
 
 ```
-eco-tree/
-├── index.html              # Home page
-├── calculator.html          # Carbon calculator
-├── map.html                # Map visualizer
-├── bulk.html               # Bulk CSV upload
-├── pollution.html          # City pollution comparator
-├── dashboard.html          # Dashboard & leaderboard
-├── static/
-│   ├── style.css           # Global styles
-│   ├── script.js           # Shared utilities
-│   ├── calculator.js       # Calculator logic
-│   ├── map.js              # Map logic
-│   ├── bulk.js             # Bulk upload logic
-│   ├── pollution.js        # Pollution comparator logic
-│   └── dashboard.js        # Dashboard logic
-└── assets/
-    ├── logo.png            # Logo placeholder
-    └── icons/              # Icon files
+ecotree impact analyzer/
+├── legacy/                        ← Main frontend
+│   ├── index.html                 ← Homepage with hero, species explorer, budget calc
+│   ├── calculator.html            ← Calculator Center (6 tabs)
+│   ├── pollution.html             ← City AQI analysis
+│   ├── green-city-score.html      ← Sustainability scoring
+│   ├── impact-dashboard.html      ← Analytics dashboard
+│   ├── roi-analyzer.html          ← Return on investment calculator
+│   ├── advanced-calculator.html   ← Extended species calculator
+│   ├── city-heatmap.html          ← City pollution heatmap
+│   ├── smart_tools/               ← AI-powered smart tools
+│   │   └── temperature_reducer.html
+│   ├── static/
+│   │   ├── style.css              ← Design system (glassmorphism, dark mode)
+│   │   ├── tpc-core.js            ← Core utilities (TabManager, ForecastEngine, PDF, etc.)
+│   │   ├── script.js              ← TREE_SPECIES database (42+ species)
+│   │   ├── cities-data.js         ← INDIAN_CITIES database (100+ cities)
+│   │   ├── calculator.js          ← Carbon calculator logic
+│   │   ├── budget-calculator.js   ← Budget planner logic
+│   │   ├── pollution.js           ← City AQI analysis logic
+│   │   ├── premium-modules.js     ← GreenCityScore, DarkModeToggle, etc.
+│   │   ├── climate-features.js    ← Plantation calendar, climate analysis
+│   │   ├── simulation-features.js ← Environmental simulations
+│   │   └── advanced-features.js   ← Advanced analytics
+│   └── backend/                   ← Python/Flask backend (optional)
+│       ├── app.py
+│       └── requirements.txt
+└── server/                        ← Node.js/Express backend (optional)
+    ├── app.js
+    ├── package.json
+    ├── routes/
+    │   └── api.js
+    └── README.md
 ```
 
-## Getting Started
+---
 
-1. **Start the backend (recommended)**: Use the SQLite-powered Flask API in `backend/` (see section below) to persist all progress, pins, achievements, and accounts.
-2. **Open the project**: Visit `http://127.0.0.1:5000/` after starting the backend, or open `index.html` directly for an offline-only experience.
-3. **Start calculating**: Use the calculator to start tracking your carbon impact.
+## 🚀 Getting Started
 
-## Persistent Storage Backend
+For full installation instructions, including Supabase PostgreSQL setup and Vercel deployment, please see the **root [README.md](../README.md)**.
 
-The project now ships with a lightweight Flask service that syncs every `ecotree_*` localStorage entry into `backend/eco_tree.db`, so your data survives browser refreshes and can be shared across devices.
+### Option 1: Open Directly (No Server)
+The frontend is offline-capable. Simply open `legacy/index.html` in any modern browser. Note that data will only save to localStorage in this mode.
 
-1. Open a terminal and `cd backend`
-2. Create a virtual environment (optional but recommended):
-   - `python -m venv .venv`
-   - `.\.venv\Scripts\activate` (Windows) or `source .venv/bin/activate` (macOS/Linux)
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run the server: `python app.py`
-5. Visit `http://127.0.0.1:5000/` to use the full experience. All API endpoints live under `/api` (e.g., `/api/health`, `/api/bootstrap`, `/api/store`).
+### Option 2: Run with Backend (PostgreSQL)
+Please follow the root README.md to configure your `.env` file with `DATABASE_URL` before running the Python or Node.js backend.
 
-The SQLite file `backend/eco_tree.db` is safe to back up or copy into CI environments. The server automatically creates and migrates the `kv_store` table on startup.
+---
 
-## Usage
+## 🌳 Species Database
 
-### Calculator
-1. Select a tree species (or create custom)
-2. Enter number of trees and years
-3. Click "Calculate" to see results
-4. View the chart showing CO₂ absorption over time
-5. Export to CSV or generate PDF passport
+42+ Indian tree species with:
+- CO₂ absorption rate (kg/year)
+- Water conservation potential
+- Cooling effect (°C per 100 trees)
+- Oxygen production rate
+- Growth speed classification
+- Soil type compatibility
+- Climate zone suitability
 
-### Map Visualizer
-1. Click anywhere on the map to add a pin
-2. Edit pin details (species, count, location)
-3. View summaries by location and species
-4. Export map data to CSV
+---
 
-### Bulk Upload
-1. Prepare a CSV file with columns: `species`, `count`, `location`
-2. Upload the file
-3. View species distribution charts and map visualization
-4. Save locations to the map
+## 🏙️ Cities Database
 
-### Pollution Comparator
-1. Select a city from the dropdown
-2. View current AQI and pollution levels
-3. See tree recommendations to offset emissions
-4. Compare all cities at once
+100+ Indian cities including all state capitals, tier-1 and tier-2 cities, with:
+- AQI, PM2.5, PM10 pollution levels
+- Climate zone + subzone classification
+- Average temperature and rainfall
+- Relative humidity
+- Tree density per 1,000 residents
+- Green cover percentage
+- Population data
+- Seasonal plantation suitability
 
-### Dashboard
-1. View your progress and achievements
-2. Check city leaderboard rankings
-3. Analyze statistics with interactive charts
+---
 
-## Data Persistence
+## 📊 Environmental Calculations
 
-- The backend keeps a durable copy of every `ecotree_*` key inside the SQLite `kv_store` table, so calculations, pins, goals, users, and achievements survive browser refreshes and can be restored on new devices.
-- The frontend mirrors the same data into `localStorage` for instant, offline-first reads. When the backend is unreachable, the app gracefully falls back to the local cache.
+All calculations are based on peer-reviewed environmental science:
 
-## Browser Compatibility
+- **CO₂ Absorption**: Species-specific absorption rates × climate index × tree count × years
+- **O₂ Production**: ~1.07 kg O₂ per kg CO₂ absorbed (photosynthesis equation)
+- **Water Conservation**: Species water-holding coefficient × leaf area index
+- **Temperature Reduction**: Urban heat island mitigation model (0.1–0.8°C per 100 trees)
+- **Green City Score**: Weighted composite of AQI (35%), tree density (30%), green cover (25%), population density (10%)
 
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
+---
 
-## Notes
+## 🖥️ Browser Compatibility
 
-- The OpenAQ API may have rate limits. The app includes fallback mock data for demonstration.
-- Map coordinates for cities are approximate. For production, use a geocoding API.
-- All calculations are client-side only - no backend server required.
+| Browser | Status |
+|---|---|
+| Chrome 90+ | ✅ Full support |
+| Firefox 88+ | ✅ Full support |
+| Edge 90+ | ✅ Full support |
+| Safari 14+ | ✅ Full support |
 
-## License
+---
 
-This project is open source and available for use.
+## 📄 License
 
+This project is open source. Built for India's environmental future.
 
+---
 
+## 🤝 Data Sources
 
+- [Ministry of Environment, Forest and Climate Change (MoEFCC)](https://www.moefcc.gov.in/)
+- [Forest Survey of India](https://www.fsi.nic.in/)
+- [IUCN Red List](https://www.iucnredlist.org/)
+- [OpenAQ API](https://www.openaq.org/) — for reference pollution data
+- [Central Pollution Control Board (CPCB)](https://cpcb.nic.in/)

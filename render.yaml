@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: tree-plantation-calculator
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --chdir legacy/backend app:app
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: FRONTEND_URL
+        sync: false
+      - key: API_URL
+        sync: false

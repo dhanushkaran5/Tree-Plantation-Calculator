@@ -605,6 +605,258 @@ const INDIAN_CITIES = {
         zone: 'Tropical', subzone: 'Tropical Wet and Dry',
         avgTemp: 29, rainfall: 1300, humidity: 78,
         aqi: 88, pm25: 40, pm10: 72
+    },
+    'Davanagere': {
+        lat: 14.4644, lng: 75.9218,
+        zone: 'Tropical', subzone: 'Tropical Savanna',
+        avgTemp: 26, rainfall: 650, humidity: 55,
+        aqi: 92, pm25: 43, pm10: 76
+    },
+    'Bellary': {
+        lat: 15.1394, lng: 76.9214,
+        zone: 'Arid', subzone: 'Hot Semi-Arid',
+        avgTemp: 28, rainfall: 500, humidity: 45,
+        aqi: 105, pm25: 50, pm10: 88
+    },
+    'Kalaburagi': {
+        lat: 17.3297, lng: 76.8343,
+        zone: 'Arid', subzone: 'Hot Semi-Arid',
+        avgTemp: 28, rainfall: 700, humidity: 48,
+        aqi: 112, pm25: 54, pm10: 95
+    },
+    'Nellore': {
+        lat: 14.4426, lng: 79.9865,
+        zone: 'Tropical', subzone: 'Tropical Wet and Dry',
+        avgTemp: 29, rainfall: 1080, humidity: 72,
+        aqi: 85, pm25: 39, pm10: 70
+    },
+    'Tirupati': {
+        lat: 13.6288, lng: 79.4192,
+        zone: 'Tropical', subzone: 'Tropical Savanna',
+        avgTemp: 27, rainfall: 950, humidity: 68,
+        aqi: 90, pm25: 42, pm10: 75
+    },
+    'Kurnool': {
+        lat: 15.8281, lng: 78.0373,
+        zone: 'Arid', subzone: 'Hot Semi-Arid',
+        avgTemp: 28, rainfall: 670, humidity: 50,
+        aqi: 102, pm25: 48, pm10: 85
+    },
+    'Kasaragod': {
+        lat: 12.5103, lng: 74.9852,
+        zone: 'Tropical', subzone: 'Tropical Monsoon',
+        avgTemp: 27, rainfall: 3200, humidity: 82,
+        aqi: 45, pm25: 20, pm10: 38
+    },
+    'Wayanad': {
+        lat: 11.6854, lng: 76.1320,
+        zone: 'Temperate', subzone: 'Subtropical Highland',
+        avgTemp: 20, rainfall: 2800, humidity: 80,
+        aqi: 38, pm25: 16, pm10: 30
+    },
+    'Idukki': {
+        lat: 9.8500, lng: 76.9667,
+        zone: 'Temperate', subzone: 'Subtropical Highland',
+        avgTemp: 19, rainfall: 3000, humidity: 84,
+        aqi: 35, pm25: 15, pm10: 28
+    },
+    'Ariyalur': {
+        lat: 11.1401, lng: 79.0786,
+        zone: 'Tropical', subzone: 'Tropical Savanna',
+        avgTemp: 29, rainfall: 950, humidity: 68,
+        aqi: 80, pm25: 36, pm10: 66
+    },
+    'Ramanathapuram': {
+        lat: 9.3639, lng: 78.8394,
+        zone: 'Tropical', subzone: 'Tropical Wet and Dry',
+        avgTemp: 30, rainfall: 820, humidity: 74,
+        aqi: 72, pm25: 32, pm10: 58
+    },
+    'Kodaikanal': {
+        lat: 10.2381, lng: 77.4892,
+        zone: 'Temperate', subzone: 'Oceanic',
+        avgTemp: 15, rainfall: 1650, humidity: 76,
+        aqi: 32, pm25: 14, pm10: 25
+    },
+    'Amravati': {
+        lat: 20.9374, lng: 77.7796,
+        zone: 'Tropical', subzone: 'Tropical Wet and Dry',
+        avgTemp: 27, rainfall: 850, humidity: 55,
+        aqi: 110, pm25: 52, pm10: 94
+    },
+    'Jalgaon': {
+        lat: 21.0077, lng: 75.5626,
+        zone: 'Arid', subzone: 'Hot Semi-Arid',
+        avgTemp: 27, rainfall: 750, humidity: 50,
+        aqi: 120, pm25: 58, pm10: 102
+    },
+    'Satara': {
+        lat: 17.6805, lng: 73.9918,
+        zone: 'Tropical', subzone: 'Tropical Savanna',
+        avgTemp: 24, rainfall: 1000, humidity: 62,
+        aqi: 82, pm25: 38, pm10: 68
+    },
+    'Sangli': {
+        lat: 16.8524, lng: 74.5815,
+        zone: 'Tropical', subzone: 'Tropical Savanna',
+        avgTemp: 26, rainfall: 650, humidity: 58,
+        aqi: 88, pm25: 41, pm10: 72
+    },
+    'Bilaspur': {
+        lat: 22.0796, lng: 82.1391,
+        zone: 'Tropical', subzone: 'Tropical Wet and Dry',
+        avgTemp: 26, rainfall: 1250, humidity: 64,
+        aqi: 130, pm25: 64, pm10: 110
+    },
+    'Ujjain': {
+        lat: 23.1760, lng: 75.7885,
+        zone: 'Subtropical', subzone: 'Humid Subtropical',
+        avgTemp: 25, rainfall: 900, humidity: 58,
+        aqi: 115, pm25: 55, pm10: 98
+    },
+    'Jhansi': {
+        lat: 25.4484, lng: 78.5685,
+        zone: 'Subtropical', subzone: 'Hot Semi-Arid',
+        avgTemp: 26, rainfall: 850, humidity: 52,
+        aqi: 140, pm25: 68, pm10: 118
+    },
+    'Gorakhpur': {
+        lat: 26.7606, lng: 83.3731,
+        zone: 'Subtropical', subzone: 'Humid Subtropical',
+        avgTemp: 25, rainfall: 1200, humidity: 68,
+        aqi: 148, pm25: 72, pm10: 124
+    },
+    'Prayagraj': {
+        lat: 25.4358, lng: 81.8463,
+        zone: 'Subtropical', subzone: 'Humid Subtropical',
+        avgTemp: 26, rainfall: 950, humidity: 60,
+        aqi: 155, pm25: 76, pm10: 130
+    },
+    'Aligarh': {
+        lat: 27.8974, lng: 78.0880,
+        zone: 'Subtropical', subzone: 'Hot Semi-Arid',
+        avgTemp: 25, rainfall: 750, humidity: 50,
+        aqi: 168, pm25: 82, pm10: 142
+    },
+    'Bareilly': {
+        lat: 28.3670, lng: 79.4304,
+        zone: 'Subtropical', subzone: 'Humid Subtropical',
+        avgTemp: 25, rainfall: 1050, humidity: 65,
+        aqi: 150, pm25: 73, pm10: 126
+    },
+    'Gaya': {
+        lat: 24.7955, lng: 85.0075,
+        zone: 'Subtropical', subzone: 'Humid Subtropical',
+        avgTemp: 26, rainfall: 1050, humidity: 62,
+        aqi: 152, pm25: 74, pm10: 128
+    },
+    'Muzaffarpur': {
+        lat: 26.1209, lng: 85.3647,
+        zone: 'Subtropical', subzone: 'Humid Subtropical',
+        avgTemp: 25, rainfall: 1150, humidity: 66,
+        aqi: 146, pm25: 71, pm10: 122
+    },
+    'Dhanbad': {
+        lat: 23.7957, lng: 86.4304,
+        zone: 'Tropical', subzone: 'Tropical Wet and Dry',
+        avgTemp: 26, rainfall: 1300, humidity: 70,
+        aqi: 162, pm25: 80, pm10: 138
+    },
+    'Bokaro': {
+        lat: 23.6693, lng: 86.1511,
+        zone: 'Tropical', subzone: 'Tropical Wet and Dry',
+        avgTemp: 26, rainfall: 1250, humidity: 68,
+        aqi: 145, pm25: 70, pm10: 120
+    },
+    'Asansol': {
+        lat: 23.6740, lng: 86.9525,
+        zone: 'Tropical', subzone: 'Tropical Wet and Dry',
+        avgTemp: 26, rainfall: 1350, humidity: 72,
+        aqi: 150, pm25: 72, pm10: 125
+    },
+    'Darjeeling': {
+        lat: 27.0410, lng: 88.2627,
+        zone: 'Temperate', subzone: 'Subtropical Highland',
+        avgTemp: 12, rainfall: 3000, humidity: 82,
+        aqi: 52, pm25: 24, pm10: 42
+    },
+    'Cuttack': {
+        lat: 20.4625, lng: 85.8830,
+        zone: 'Tropical', subzone: 'Tropical Wet and Dry',
+        avgTemp: 27, rainfall: 1450, humidity: 75,
+        aqi: 95, pm25: 45, pm10: 80
+    },
+    'Puri': {
+        lat: 19.8135, lng: 85.8312,
+        zone: 'Tropical', subzone: 'Tropical Wet and Dry',
+        avgTemp: 28, rainfall: 1400, humidity: 78,
+        aqi: 78, pm25: 35, pm10: 64
+    },
+    'Gandhinagar': {
+        lat: 23.2156, lng: 72.6369,
+        zone: 'Subtropical', subzone: 'Semi-Arid',
+        avgTemp: 27, rainfall: 800, humidity: 52,
+        aqi: 115, pm25: 54, pm10: 96
+    },
+    'Jamnagar': {
+        lat: 22.4707, lng: 70.0577,
+        zone: 'Arid', subzone: 'Hot Semi-Arid',
+        avgTemp: 27, rainfall: 550, humidity: 60,
+        aqi: 108, pm25: 50, pm10: 90
+    },
+    'Jodhpur': {
+        lat: 26.2389, lng: 73.0243,
+        zone: 'Arid', subzone: 'Hot Desert',
+        avgTemp: 28, rainfall: 350, humidity: 38,
+        aqi: 135, pm25: 64, pm10: 114
+    },
+    'Kota': {
+        lat: 25.1800, lng: 75.8300,
+        zone: 'Subtropical', subzone: 'Semi-Arid',
+        avgTemp: 27, rainfall: 750, humidity: 48,
+        aqi: 128, pm25: 60, pm10: 108
+    },
+    'Jammu': {
+        lat: 32.7266, lng: 74.8570,
+        zone: 'Subtropical', subzone: 'Humid Subtropical',
+        avgTemp: 23, rainfall: 1100, humidity: 62,
+        aqi: 112, pm25: 52, pm10: 95
+    },
+    'Dharamshala': {
+        lat: 32.2190, lng: 76.3234,
+        zone: 'Temperate', subzone: 'Subtropical Highland',
+        avgTemp: 18, rainfall: 2900, humidity: 66,
+        aqi: 58, pm25: 26, pm10: 48
+    },
+    'Haridwar': {
+        lat: 29.9457, lng: 78.1642,
+        zone: 'Subtropical', subzone: 'Humid Subtropical',
+        avgTemp: 23, rainfall: 1200, humidity: 64,
+        aqi: 105, pm25: 48, pm10: 88
+    },
+    'Panaji': {
+        lat: 15.4909, lng: 73.8278,
+        zone: 'Tropical', subzone: 'Tropical Monsoon',
+        avgTemp: 27, rainfall: 2900, humidity: 82,
+        aqi: 62, pm25: 28, pm10: 50
+    },
+    'Shillong': {
+        lat: 25.5788, lng: 91.8933,
+        zone: 'Temperate', subzone: 'Subtropical Highland',
+        avgTemp: 17, rainfall: 2400, humidity: 76,
+        aqi: 45, pm25: 20, pm10: 36
+    },
+    'Imphal': {
+        lat: 24.8170, lng: 93.9368,
+        zone: 'Subtropical', subzone: 'Humid Subtropical',
+        avgTemp: 21, rainfall: 1400, humidity: 74,
+        aqi: 72, pm25: 32, pm10: 58
+    },
+    'Port Blair': {
+        lat: 11.6234, lng: 92.7265,
+        zone: 'Tropical', subzone: 'Tropical Monsoon',
+        avgTemp: 28, rainfall: 3100, humidity: 80,
+        aqi: 38, pm25: 16, pm10: 30
     }
 };
 

@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "legacy/backend/app.py", "use": "@vercel/python" },
+    { "src": "legacy/carbon reduction_calculator/app.py", "use": "@vercel/python" },
+    { "src": "server/app.js", "use": "@vercel/node" },
+    { "src": "legacy/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/node/(.*)", "dest": "server/app.js" },
+    { "src": "/api/(.*)", "dest": "legacy/backend/app.py" },
+    { "src": "/calculate", "dest": "legacy/carbon reduction_calculator/app.py" },
+    { "src": "/dashboard", "dest": "legacy/carbon reduction_calculator/app.py" },
+    { "src": "/([^/.]+)", "dest": "legacy/$1.html" },
+    { "src": "/(.*)", "dest": "legacy/$1" }
+  ]
+}

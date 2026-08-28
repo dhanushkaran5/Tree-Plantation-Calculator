@@ -1,65 +1,49 @@
-"""SQLite helpers for EcoTree persistent storage."""
+"""SQLAlchemy helpers for EcoTree persistent storage."""
 
 from __future__ import annotations
 
-import sqlite3
-from contextlib import closing
+import sys
 from pathlib import Path
 from typing import Dict
 
-BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = BASE_DIR / "eco_tree.db"
+# Add the root directory to sys.path so we can import config.database
+BASE_DIR = Path(__file__).resolve().parents[2]
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
 
+from sqlalchemy import Column, String, DateTime, text
+from config.database import Base, engine, SessionLocal
 
-def get_connection() -> sqlite3.Connection:
-    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
-
+class KVStore(Base):
+    __tablename__ = 'kv_store'
+    key = Column(String, primary_key=True)
+    value = Column(String)
+    updated_at = Column(DateTime, server_default=text("CURRENT_TIMESTAMP"), onupdate=text("CURRENT_TIMESTAMP"))
 
 def initialize() -> None:
     """Create the key-value table if it does not exist."""
-    with closing(get_connection()) as conn:
-        with conn:
-            conn.execute(
-                """
-                CREATE TABLE IF NOT EXISTS kv_store (
-                    key TEXT PRIMARY KEY,
-                    value TEXT,
-                    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-                )
-                """
-            )
-
+    Base.metadata.create_all(bind=engine)
 
 def get_all_entries() -> Dict[str, str]:
-    with closing(get_connection()) as conn:
-        rows = conn.execute("SELECT key, value FROM kv_store").fetchall()
-    return {row["key"]: row["value"] for row in rows}
-
+    with SessionLocal() as db:
+        rows = db.query(KVStore).all()
+        return {row.key: row.value for row in rows}
 
 def upsert_entry(key: str, value: str) -> None:
-    with closing(get_connection()) as conn:
-        with conn:
-            conn.execute(
-                """
-                INSERT INTO kv_store(key, value, updated_at)
-                VALUES (?, ?, CURRENT_TIMESTAMP)
-                ON CONFLICT(key) DO UPDATE SET
-                    value = excluded.value,
-                    updated_at = CURRENT_TIMESTAMP
-                """,
-                (key, value),
-            )
-
+    with SessionLocal() as db:
+        entry = db.query(KVStore).filter_by(key=key).first()
+        if entry:
+            entry.value = value
+        else:
+            entry = KVStore(key=key, value=value)
+            db.add(entry)
+        db.commit()
 
 def delete_entry(key: str) -> None:
-    with closing(get_connection()) as conn:
-        with conn:
-            conn.execute("DELETE FROM kv_store WHERE key = ?", (key,))
-
+    with SessionLocal() as db:
+        entry = db.query(KVStore).filter_by(key=key).first()
+        if entry:
+            db.delete(entry)
+            db.commit()
 
 initialize()
-
-

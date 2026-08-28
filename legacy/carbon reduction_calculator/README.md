@@ -6,14 +6,14 @@ A full-stack Flask application that estimates annual and long-range CO₂ absorp
 - Tree CO₂ absorption calculator (Neem, Mango, Banyan, Teak, etc.) using fixed annual rates gathered from openly available forestry and plantation references (compiled via Google).
 - City → climate mapping engine with tailored tree suggestions.
 - 5-year and 10-year CO₂ projections using simple growth multipliers.
-- History storage (tree, quantity, city, CO₂ result, timestamp) in SQLite.
+- History storage (tree, quantity, city, CO₂ result, timestamp) in PostgreSQL.
 - Dashboard showing totals, badges (Bronze → Platinum), history table, and Chart.js graph.
 - Tree growth visualizer slider for quick horizon previews.
 
 ## Tech Stack
 - **Backend:** Python 3.11+, Flask 3
 - **Frontend:** HTML, CSS, vanilla JavaScript, Chart.js
-- **Database:** SQLite (auto-created `carbon.db`)
+- **Database:** PostgreSQL (via SQLAlchemy)
 
 ## Quick Start
 1. **Clone / open project** in VS Code.
@@ -31,7 +31,7 @@ A full-stack Flask application that estimates annual and long-range CO₂ absorp
    ```bash
    flask --app app run --debug
    ```
-   On first launch the app seeds SQLite tables using `trees.json` and `cities.json`.
+   On first launch the app seeds PostgreSQL tables using `trees.json` and `cities.json`.
 5. **Visit** http://127.0.0.1:5000 to use the calculator. Open `/dashboard` for history & charts.
 
 ## Project Structure
@@ -39,7 +39,7 @@ A full-stack Flask application that estimates annual and long-range CO₂ absorp
 project-root/
 ├── app.py                # Flask routes and view logic
 ├── database.py           # SQLite helpers + seeders
-├── carbon.db             # Auto-created database (git-ignored)
+├── config/database.py    # PostgreSQL connection logic
 ├── trees.json            # Tree absorption reference data
 ├── cities.json           # City climates + recommendations
 ├── requirements.txt
